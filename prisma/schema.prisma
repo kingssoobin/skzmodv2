@@ -1,0 +1,23 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/nachimbong_app/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model TextPreset {
+  id        String   @id @default(cuid())
+  name      String
+  line1     String   @default("")
+  line2     String   @default("")
+  line3     String   @default("")
+  numLines  Int      @default(1)
+  font      String   @default("Arial")
+  fontSize  Int      @default(24)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
